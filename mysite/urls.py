@@ -16,8 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls'))
 ]
+#! خط زیر میگوید ما استاتیک هایی (همون ثابت ها) یی داریم که
+# ! در یو آر ال عه استاتیک تعریف شده و دایرکتوری هم که براش تنظیم شده
+# ! طبق تنظیمات فایل ستینگ برنامه به صورت
+# ! می باشد base / static
+# ! static ('static' , 'base / static')
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# ? https://docs.djangoproject.com/en/4.2/howto/static-files/
+
