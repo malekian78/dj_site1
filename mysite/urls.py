@@ -21,7 +21,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('website.urls'))
+    path('', include('website.urls')),
+    path('blog/', include('blog.urls')),
 ]
 #! خط زیر میگوید ما استاتیک هایی (همون ثابت ها) یی داریم که
 # ! در یو آر ال عه استاتیک تعریف شده و دایرکتوری هم که براش تنظیم شده
