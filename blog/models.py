@@ -13,6 +13,12 @@ class Post(models.Model):
     published_date = models.DateTimeField(null=True)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
+    def __str__(self) -> str:
+        return self.title
+
+    class Meta: #? https://docs.djangoproject.com/en/4.2/ref/models/options/
+        ordering = ['-created_date']
+        verbose_name_plural = "پست ها"
     
 class Contact(models.Model):
     name = models.CharField(max_length=255)

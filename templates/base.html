@@ -65,11 +65,7 @@
                         <li><a href="{% url 'website:home' %}">Home</a></li>
                         <li><a href="about.html">About</a></li>
                         <li class="menu-has-children">
-                            <a href="">Blog</a>
-                            <ul>
-                                <li><a href="{% url 'blog:blogView' %}">Blog Home</a></li>
-                                <li><a href="{% url 'blog:blogSingle' %}">Blog Single</a></li>
-                            </ul>
+                            <a href="{% url 'blog:blogView' %}">Blog</a>
                         </li>
                         <li class="menu-has-children">
                             <a href="">Pages</a>

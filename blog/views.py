@@ -1,11 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from .models import Post
 
 def blog_view(request):
     # return HttpResponse("<h1>Text from view Home</h1>")
-    return render(request, 'blog/blog-home.html')
+    allpost = Post.objects.filter(status=True)
+    context = {'posts':allpost, "test":'test'}
+    return render(request, 'blog/blog-home.html', context)
 
-def blog_single(request):
-    return render(request, 'blog/blog-single.html')
+def blog_single(request, post_id):
+    #! روش اول
+    # allpost = Post.objects.filter(status=True)
+    # thePost = get_object_or_404(allpost, pk= post_id)
+    #! روش دوم (که خودم همینو ترجیح میدم)
+    thePost = get_object_or_404(Post, pk = post_id, status=True)
+    return render(request, 'blog/blog-single.html', {'thePost':thePost}) 
 
 def myblog(request):
     return render(request, 'myblog/index.html')
