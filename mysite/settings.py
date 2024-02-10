@@ -42,7 +42,36 @@ INSTALLED_APPS = [
     # 'blog.apps.BlogConfig',
     'blog',
     'website',
+    'jalali_date',#!https://pypi.org/project/django-jalali-date/
 ]
+
+#!https://pypi.org/project/django-jalali-date/
+#! default settings (optional)
+JALALI_DATE_DEFAULTS = {
+   # if change it to true then all dates of the list_display will convert to the Jalali.
+   'LIST_DISPLAY_AUTO_CONVERT': False,
+   'Strftime': {
+        'date': '%y/%m/%d',
+        'datetime': '%H:%M:%S _ %y/%m/%d',
+    },
+    'Static': {
+        'js': [
+            # loading datepicker
+            'admin/js/django_jalali.min.js',
+            # OR
+            # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.core.js',
+            # 'admin/jquery.ui.datepicker.jalali/scripts/calendar.js',
+            # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.datepicker-cc.js',
+            # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.datepicker-cc-fa.js',
+            # 'admin/js/main.js',
+        ],
+        'css': {
+            'all': [
+                'admin/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css',
+            ]
+        }
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -109,6 +138,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+
+#! https://pypi.org/project/django-jalali-date/
+#! (Optional) If you want the names of the dates to be displayed in Farsi, please add the following command to the settings.
+# LANGUAGE_CODE = 'fa'
+# import locale
+# locale.setlocale(locale.LC_ALL, "Persian_Iran.UTF-8")
 
 TIME_ZONE = 'UTC'
 
