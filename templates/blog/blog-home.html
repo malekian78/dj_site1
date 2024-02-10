@@ -105,9 +105,9 @@
 										{% endcomment %}
 										{{post.author.get_full_name}}
 									</a> <span class="lnr lnr-user"></span></p>
-<p class="date col-lg-12 col-md-12 col-6">
-	<a href="#">{{post.published_date|to_jalali:'%A %d %B %Y %H:%M'}}</a> <span class="lnr lnr-calendar-full"></span>
-</p>
+									<p class="date col-lg-12 col-md-12 col-6">
+										<a href="#">{{post.published_date|to_jalali:'%A %d %B %Y %H:%M'}}</a> <span class="lnr lnr-calendar-full"></span>
+									</p>
 									<p class="view col-lg-12 col-md-12 col-6"><a href="#">{{post.counted_views}} Views</a> <span class="lnr lnr-eye"></span></p>
 									<p class="comments col-lg-12 col-md-12 col-6"><a href="#">06 Comments</a> <span class="lnr lnr-bubble"></span></p>						
 								</div>
@@ -119,8 +119,12 @@
 								<a class="posts-title" href="{% url 'blog:single' post_id=post.id %}"> {% comment %}? داکیومنت یوآرال برای فرستادن پارامتر https://docs.djangoproject.com/en/4.2/ref/templates/builtins/#std-templatetag-url {% endcomment %}
 									<h3>{{post.title}}</h3>
 								</a> 
-								<p class="excert">
-									{{post.content}}
+								<p class="excert" style="direction:rtl">
+									{% comment %}! که در حقیقت تنها بخشی از متن کامل را به ما برمیگرداند truncatechars یا truncatewords خلاصه نویسی از طریق  {% endcomment %}
+									<p>{{post.content|truncatewords:30}} </p>
+									<p>{{post.content|truncatechars:9}} </p>
+									{% comment %} ! یا هم اینکه از تابعی که داخل مدلمون تعریف کردیم استفاده کنیم {% endcomment %}
+									{% comment %} {{post.myFirst5wordOfcontetn}} {% endcomment %}
 								</p>
 								<a href="blog-single.html" class="primary-btn">View More</a>
 							</div>

@@ -22,6 +22,10 @@ class Post(models.Model):
     updated_date = models.DateTimeField(auto_now=True)
     def __str__(self) -> str:
         return self.title
+    
+    def myFirst5wordOfcontetn(self): #! تابعی که خودمون تعریف کردیم
+        first30word = self.content.split()[:5]
+        return ''.join(str(x+" ") for x in first30word) + "..."
 
     class Meta: #? https://docs.djangoproject.com/en/4.2/ref/models/options/
         ordering = ['-created_date']

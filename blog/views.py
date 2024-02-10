@@ -4,7 +4,7 @@ from .models import Post
 def blog_view(request):
     # return HttpResponse("<h1>Text from view Home</h1>")
     allpost = Post.objects.filter(status=True)
-    context = {'posts':allpost, "test":'test'}
+    context = {'posts':allpost, "test":30}
     return render(request, 'blog/blog-home.html', context)
 
 def blog_single(request, post_id):
