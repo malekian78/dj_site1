@@ -22,6 +22,12 @@ def myFilter(value,num=30):
     return value[:num]
 
 @register.inclusion_tag('last3posts.html')
+def test_last3posts():
+    posts = Post.objects.filter(status=1).order_by('published_date')[:3]
+    return {'posts': posts}
+#!________________________________________________
+#! مقدار ۳ تا پست آخر
+@register.inclusion_tag('blog/last3blog.html')
 def last3posts():
     posts = Post.objects.filter(status=1).order_by('published_date')[:3]
     return {'posts': posts}
