@@ -1,11 +1,26 @@
+{% load blog_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>myblog</title>
+    <title>myblogFor Testing</title>
 </head>
 <body>
-    <h1>khobi</h1>
+    <h1>For Testing</h1>
+    <p>{% plus2 %}</p>
+    <p>{% plus2 5 %}</p>
+    <p>{% PostCount %}</p>
+    {% PostCount as pc %}
+    <p> 
+        {{pc}}
+    </p>
+    {% comment %} !___________ {% endcomment %}
+    {% allpost as ap %}
+    {% for post in ap %}
+        <p>{{post.content|myFilter:20}}</p>
+    {% endfor %}
+    {% comment %} !___________ {% endcomment %}
+    {% last3posts %}
 </body>
 </html>
