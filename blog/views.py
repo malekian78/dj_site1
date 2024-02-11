@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post
 
-def blog_view(request):
-    # return HttpResponse("<h1>Text from view Home</h1>")
-    allpost = Post.objects.filter(status=True)
-    context = {'posts':allpost, "test":30}
+def blog_view(request, cat_name=None):
+    posts = Post.objects.filter(status=True)
+    if cat_name:
+        posts = posts.filter(category__name=cat_name)
+    context = {'posts':posts, "test":30}
     return render(request, 'blog/blog-home.html', context)
 
 def blog_single(request, post_id):
@@ -16,10 +17,5 @@ def blog_single(request, post_id):
     return render(request, 'blog/blog-single.html', {'thePost':thePost}) 
 
 def myblog(request):
+    # return HttpResponse("<h1>Text from view Home</h1>")
     return render(request, 'myblog/index.html')
-
-def blog_category(request, cat_name):
-    posts = Post.objects.filter(status=1)
-    posts = posts.filter(category__name=cat_name)
-    contex = {'posts':posts}
-    return render(request,'blog/blog-home.html', contex)
