@@ -17,3 +17,9 @@ def blog_single(request, post_id):
 
 def myblog(request):
     return render(request, 'myblog/index.html')
+
+def blog_category(request, cat_name):
+    posts = Post.objects.filter(status=1)
+    posts = posts.filter(category__name=cat_name)
+    contex = {'posts':posts}
+    return render(request,'blog/blog-home.html', contex)
