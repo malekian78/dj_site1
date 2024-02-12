@@ -122,7 +122,7 @@
 								</a> 
 								<p class="excert" style="direction:rtl">
 									{% comment %}! که در حقیقت تنها بخشی از متن کامل را به ما برمیگرداند truncatechars یا truncatewords خلاصه نویسی از طریق  {% endcomment %}
-									{% comment %} <p>{{post.content|truncatewords:30}} </p> {% endcomment %}
+									<p>{{post.content|truncatewords:30}} </p>
 									{% comment %} <p>{{post.content|truncatechars:9}} </p> {% endcomment %}
 									{% comment %} ! یا هم اینکه از تابعی که داخل مدلمون تعریف کردیم استفاده کنیم {% endcomment %}
 									{% comment %} {{post.myFirst5wordOfcontetn}} {% endcomment %}
@@ -158,12 +158,7 @@
 				</div>
 				<div class="col-lg-4 sidebar-widgets">
 					<div class="widget-wrap">
-						<div class="single-sidebar-widget search-widget">
-							<form class="search-form" action="#">
-								<input placeholder="Search Posts" name="search" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'" >
-								<button type="submit"><i class="fa fa-search"></i></button>
-							</form>
-						</div>
+						{% include "blog/blog-search.html" %}
 						{% include 'blog/blog-writer.html' %}
 						{% last3posts %}
 						<div class="single-sidebar-widget ads-widget">

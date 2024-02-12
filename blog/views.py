@@ -23,6 +23,15 @@ def blog_single(request, post_id):
     thePost = get_object_or_404(Post, pk = post_id, status=True)
     return render(request, 'blog/blog-single.html', {'thePost':thePost}) 
 
+def blog_search(request):
+    print(request.__dict__)
+    print(request)
+    posts = Post.objects.filter(status=True)
+    if request.method == "GET":
+        posts = posts.filter(content__contains = request.GET.get('s'))
+    context = {'posts':posts, "test":30}
+    return render(request, 'blog/blog-home.html', context)
+
 def myblog(request):
     # return HttpResponse("<h1>Text from view Home</h1>")
     return render(request, 'myblog/index.html')
