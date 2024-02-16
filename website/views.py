@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .forms import contactForm1,ContactForm2
 from website.models import Contact
+from django.contrib import messages
 
 # Create your views here.
 def home(request):
@@ -9,7 +10,17 @@ def home(request):
     return render(request, 'website/index.html')
 
 def contatct(request):
-    return render(request, 'website/contact.html')
+    if request.method == "POST":
+        form = ContactForm2(request.POST)
+        print(request.POST)
+        # print(form.cleaned_data)
+        if form.is_valid():
+            messages.add_message(request, messages.SUCCESS, 'اطلاعات شما با موفقیت دریافت شد')
+            form.save()
+        else:
+            messages.add_message(request, messages.ERROR, 'متاسفانه اطلاعات شما دریافت نشد')
+    form = ContactForm2()
+    return render(request, 'website/contact.html', {'form':form})
 
 def testingForm1(request):
     if request.method == "POST":

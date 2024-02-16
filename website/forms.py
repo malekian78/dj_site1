@@ -9,7 +9,7 @@ class contactForm1(forms.Form):
 
 
 class ContactForm2(forms.ModelForm):
-    another_field = forms.CharField(max_length=255)
+    # another_field = forms.CharField(max_length=255)
     class Meta:
         model = Contact
         fields = '__all__' #! به کاربر نمایش دهی html فیلدهایی که میخواهی در 
