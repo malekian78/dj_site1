@@ -29,7 +29,7 @@ def test_last3posts():
 #! مقدار ۳ تا پست آخر
 @register.inclusion_tag('blog/last3blog.html')
 def last3posts():
-    posts = Post.objects.filter(status=1).order_by('published_date')[:3]
+    posts = Post.objects.filter(status=1).order_by('-published_date')[:3]
     return {'posts': posts}
 #!________________________________________________
 #! مقدار دسته بندی ها و تعداد پست هر دسته بندی
