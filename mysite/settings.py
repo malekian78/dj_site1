@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize', #https://docs.djangoproject.com/en/4.2/ref/contrib/humanize/
     'django_extensions', #https://github.com/django-extensions/django-extensions?tab=readme-ov-file
     'django.contrib.sites', #https://docs.djangoproject.com/en/4.2/ref/contrib/sites/
-    # 'django.contrib.sitemaps', #https://docs.djangoproject.com/en/4.2/ref/contrib/sitemaps/
+    'django.contrib.sitemaps', #https://docs.djangoproject.com/en/4.2/ref/contrib/sitemaps/
     
     # 'blog.apps.BlogConfig',
     'blog',
