@@ -39,6 +39,7 @@ urlpatterns = [
     ),
     path('robots.txt', include('robots.urls')),
     path("__debug__/", include("debug_toolbar.urls")),
+    path('summernote/', include('django_summernote.urls')),
 ]
 #! خط زیر میگوید ما استاتیک هایی (همون ثابت ها) یی داریم که
 # ! در یو آر ال عه استاتیک تعریف شده و دایرکتوری هم که براش تنظیم شده

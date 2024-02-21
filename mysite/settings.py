@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
     'robots', # https://pypi.org/project/django-robots/
     "debug_toolbar", #https://django-debug-toolbar.readthedocs.io/en/latest/installation.html 
     "taggit", # https://django-taggit.readthedocs.io/en/latest/getting_started.html 
+    "django_summernote", # https://github.com/summernote/django-summernote 
     
     # 'blog.apps.BlogConfig',
     'blog',
@@ -116,6 +118,42 @@ TEMPLATES = [
     },
 ]
 
+SUMMERNOTE_CONFIG = {
+    # Using SummernoteWidget - iframe mode, default
+    'iframe': True,
+
+    # Or, you can set it to `False` to use SummernoteInplaceWidget by default - no iframe mode
+    # In this case, you have to load Bootstrap/jQuery sources and dependencies manually.
+    # Use this when you're already using Bootstrap/jQuery based themes.
+    # 'iframe': False,
+
+    # You can put custom Summernote settings
+    'summernote': {
+        # As an example, using Summernote Air-mode
+        'airMode': False,
+
+        # Change editor size
+        'width': '1000px',
+        'height': '480',
+
+        # Use proper language setting automatically (default)
+        # 'lang': None,
+
+        # Toolbar customization
+        # https://summernote.org/deep-dive/#custom-toolbar-popover
+        'toolbar': [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['fontname', ['fontname']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']],
+        ],
+    } 
+}
+
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
@@ -173,8 +211,10 @@ USE_TZ = True
 STATIC_URL = 'statics/'
 STATIC_ROOT = BASE_DIR / 'statics'
 
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = BASE_DIR / 'media/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # ! چهار خط کد بالا به صورت پیش فرض برای اپ ها می باشد
 # ! ولی خط زیر یعنی آقا علاوه بر ۴ خط کدبالا که ماله پیش فرض هست
@@ -193,3 +233,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+X_FRAME_OPTIONS = "SAMEORIGIN"
