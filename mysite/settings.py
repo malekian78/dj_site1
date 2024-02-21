@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_extensions', #https://github.com/django-extensions/django-extensions?tab=readme-ov-file
     'django.contrib.sites', #https://docs.djangoproject.com/en/4.2/ref/contrib/sites/
     'django.contrib.sitemaps', #https://docs.djangoproject.com/en/4.2/ref/contrib/sitemaps/
+    'robots', # https://pypi.org/project/django-robots/
     
     # 'blog.apps.BlogConfig',
     'blog',
@@ -50,6 +51,11 @@ INSTALLED_APPS = [
 
 #! و آیدی شماره ۱ مراجعه میکند django_site برای اینکه بفهمه آدرس سایت من چیه؟....خب مستقیم به پایگاه داده 
 SITE_ID = 1 #https://docs.djangoproject.com/en/4.2/ref/contrib/sites/
+
+#https://django-robots.readthedocs.io/en/latest/#sitemaps
+ROBOTS_USE_SITEMAP = True
+# https://django-robots.readthedocs.io/en/latest/#host-directive
+ROBOTS_USE_HOST = True
 
 #!https://pypi.org/project/django-jalali-date/
 #! default settings (optional)
