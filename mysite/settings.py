@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'multi_captcha_admin', #https://github.com/a-roomana/django-multi-captcha-admin
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -53,6 +54,10 @@ INSTALLED_APPS = [
     'website',
     'jalali_date',#!https://pypi.org/project/django-jalali-date/
 ]
+
+MULTI_CAPTCHA_ADMIN = {
+    'engine': 'simple-captcha',
+}
 
 #! و آیدی شماره ۱ مراجعه میکند django_site برای اینکه بفهمه آدرس سایت من چیه؟....خب مستقیم به پایگاه داده 
 SITE_ID = 1 #https://docs.djangoproject.com/en/4.2/ref/contrib/sites/
