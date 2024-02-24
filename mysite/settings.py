@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "debug_toolbar", #https://django-debug-toolbar.readthedocs.io/en/latest/installation.html 
     "taggit", # https://django-taggit.readthedocs.io/en/latest/getting_started.html 
     "django_summernote", # https://github.com/summernote/django-summernote 
+    "captcha", #https://django-simple-captcha.readthedocs.io/en/latest/usage.html#installation
     
     # 'blog.apps.BlogConfig',
     'blog',
@@ -211,10 +212,10 @@ USE_TZ = True
 STATIC_URL = 'statics/'
 STATIC_ROOT = BASE_DIR / 'statics'
 
-# MEDIA_URL = '/media/'
-# MEDIA_ROOT = BASE_DIR / 'media/'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_ROOT = BASE_DIR / 'media/'
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # ! چهار خط کد بالا به صورت پیش فرض برای اپ ها می باشد
 # ! ولی خط زیر یعنی آقا علاوه بر ۴ خط کدبالا که ماله پیش فرض هست
