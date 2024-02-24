@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post,Comment
+from blog.forms import CommentForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib import messages
 
 # def blog_view(request, cat_name=None, author_username = None):
 def blog_view(request, **kwargs):
@@ -36,9 +38,17 @@ def blog_single(request, post_id):
     # allpost = Post.objects.filter(status=True)
     # thePost = get_object_or_404(allpost, pk= post_id)
     #! روش دوم (که خودم همینو ترجیح میدم)
+    if request.method == "POST":
+        forms = CommentForm(request.POST)
+        if forms.is_valid():
+            messages.add_message(request, messages.SUCCESS, 'کامنت شما با موفقیت دریافت شد')
+            forms.save()
+        else:
+            messages.add_message(request, messages.ERROR, 'کامنت شما دریافت نشد')
     thePost = get_object_or_404(Post, pk = post_id, status=True)
     comments = Comment.objects.filter(post=thePost.pk,approved=True).order_by('-created_date')
-    return render(request, 'blog/blog-single.html', {'thePost':thePost,'comments':comments}) 
+    forms = CommentForm()
+    return render(request, 'blog/blog-single.html', {'thePost':thePost,'comments':comments,'forms':forms}) 
 
 def blog_search(request):
     print(request.__dict__)
