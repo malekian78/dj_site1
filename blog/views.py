@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Post
+from .models import Post,Comment
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # def blog_view(request, cat_name=None, author_username = None):
@@ -37,7 +37,8 @@ def blog_single(request, post_id):
     # thePost = get_object_or_404(allpost, pk= post_id)
     #! روش دوم (که خودم همینو ترجیح میدم)
     thePost = get_object_or_404(Post, pk = post_id, status=True)
-    return render(request, 'blog/blog-single.html', {'thePost':thePost}) 
+    comments = Comment.objects.filter(post=thePost.pk,approved=True).order_by('-created_date')
+    return render(request, 'blog/blog-single.html', {'thePost':thePost,'comments':comments}) 
 
 def blog_search(request):
     print(request.__dict__)
