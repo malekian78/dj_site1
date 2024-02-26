@@ -49,7 +49,9 @@ INSTALLED_APPS = [
     "django_summernote", # https://github.com/summernote/django-summernote 
     "captcha", #https://django-simple-captcha.readthedocs.io/en/latest/usage.html#installation
     
+    
     # 'blog.apps.BlogConfig',
+    "account",
     'blog',
     'website',
     'jalali_date',#!https://pypi.org/project/django-jalali-date/

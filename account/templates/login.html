@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+</head>
+<body>
+    <h1>slam</h1>
+    <p>{{msg}}</p>
+    
+    {% if request.user.is_authenticated %}
+        <h2>user is authenticated</h2>
+        <p>Hello {{request.user.username}}</p>
+    {% else %}
+        <h2>nootttt authenticate</h2>
+    {% endif %}
+        
+</body>
+</html>
