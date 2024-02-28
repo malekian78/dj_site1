@@ -1,11 +1,40 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>CodePen - Glassmorphism Login</title>
+  <link rel="stylesheet" href="{% static 'forLogin/style.css' %}">
+
 </head>
 <body>
-    signup
+<!-- partial:index.partial.html -->
+<body>
+    <section class="container">
+        <div class="login-container">
+            <div class="circle circle-one"></div>
+            <div class="form-container">
+                <img src="{% static 'forLogin/illustration.png' %}" alt="illustration" class="illustration" />
+                <h1 class="opacity">Sign Up</h1>
+                <form method="post" action="{% url 'account:signup' %}">
+                    {% csrf_token %}
+                    {% comment %} <input name="username" type="text" placeholder="USERNAME" />
+                    <input name="password" type="password" placeholder="PASSWORD" /> {% endcomment %}
+                    {{form.as_p}}
+                    <button class="opacity">submit</button>
+                </form>
+                <div class="register-forget opacity">
+                    <a href="">Login</a>
+                    {% comment %} <a href="">FORGOT PASSWORD</a> {% endcomment %}
+                </div>
+            </div>
+            <div class="circle circle-two"></div>
+        </div>
+        <div class="theme-btn-container"></div>
+    </section>
+</body>
+<!-- partial -->
+  <script  src="{% static 'forLogin/script.js' %}"></script>
+
 </body>
 </html>
